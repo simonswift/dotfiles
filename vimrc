@@ -30,7 +30,9 @@ set wrap                          " Turn on line wrapping.
 set scrolloff=3                   " Show 3 lines of context around the cursor.
 
 " Do I want to keep these? Or should I let vim handle backups?
-set nobackup
+"set nobackup
+set backup
+set backupdir=~/.vim/backup
 set noswapfile
 
 set pastetoggle=<F2>

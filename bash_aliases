@@ -8,6 +8,8 @@ export no_proxy=127.0.0.1
 alias ..="cd .."
 alias ...="cd ../.."
 
+alias evergreen="be rails s -p 4000"
+
 # Bash & Vim
 alias bashe="vim ~/.bash_aliases"
 alias bashl="source ~/.bash_aliases; echo '.bash_aliases loaded'"
