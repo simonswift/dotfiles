@@ -1,8 +1,8 @@
-[brian]
-  griffin = Brian Griffin
+[adam]
+ georgeson = Adam Georgeson
 [user]
-  name = Brian Griffin
-  email = brian.griffin@sage.com
+  name = Adam Georgeson
+  email = adam.georgeson@sage.com
 [alias]
   st = status
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short

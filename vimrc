@@ -59,7 +59,7 @@ set list
 set lcs=eol:¬
 
 " Tab mappings.
-map <leader>tt :tabnew<cr>
+" map <leader>tt :tabnew<cr>
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
 map <leader>to :tabonly<cr>

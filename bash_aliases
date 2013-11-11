@@ -134,7 +134,7 @@ function get_branch_status {
 # Set the prompt according to which repo the current dir is in - if any
 function set_prompt {
   # Set the default prompt
-  PS1="$PS1_TIME$PS1_PATH\w$PS1_MARKER"
+  PS1="$PS1_PATH\w$PS1_MARKER"
 
   # ADD GIT LABELS
   # If git status errors then we are not in a git repo
@@ -166,7 +166,7 @@ function set_prompt {
   current_branch=$(git branch --no-color | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/")
 
   # Set prompt with GIT labels
-  PS1="$PS1_TIME$GIT_LABEL ${repo_name} $GIT_BRANCH ${current_branch} ${branch_status} $NO_COLOUR $GIT_PATH\w$NO_COLOR $PS1_MARKER"
+  PS1="$GIT_LABEL ${repo_name} $GIT_BRANCH ${current_branch} ${branch_status} $NO_COLOUR $GIT_PATH\w$NO_COLOR $PS1_MARKER"
 }
 
 # Custom window dims & pos for Sublime and Console duo
