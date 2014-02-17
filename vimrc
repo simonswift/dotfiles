@@ -38,7 +38,7 @@ set noswapfile
 set pastetoggle=<F2>
 
 set mouse=a
-
+set clipboard=unnamed
 noremap ; :
 
 nnoremap j gj

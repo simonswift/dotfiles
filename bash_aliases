@@ -1,5 +1,10 @@
-# Return to Dev Console and clear
-alias dev="cd ~/Development; clear"
+# Go to common locations
+alias dev="cd ~/dev; clear"
+alias gtmso="cd ~/dev/mysageone_uk; clear"
+alias gtacc="cd ~/dev/sage_one_accounts_uk; clear"
+alias gtpay="cd ~/dev/sage_one_payroll_uk; clear"
+alias gtext="cd ~/dev/sage_one_advanced_uk/host_app; clear"
+alias gtadd="cd ~/dev/sage_one_addons_uk/host_app; clear"
 
 # Proxy Fix for RSpec and Firefox 14
 export no_proxy=127.0.0.1
@@ -14,7 +19,7 @@ alias evergreen="be rails s -p 4000"
 alias bashe="vim ~/.bash_aliases"
 alias bashl="source ~/.bash_aliases; echo '.bash_aliases loaded'"
 alias vime="vim ~/.vimrc"
-alias server="python -m SimpleHTTPServer"
+alias server="python -m SimpleHTTPServer":
 
 #enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -40,7 +45,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # development tasks
 alias g="git"
 alias gc="git checkout"
-alias gs="git status"
+alias gs="git status -sb"
 alias gb="git checkout -b"
 alias gd="git diff"
 alias gp="git pull"
@@ -49,6 +54,20 @@ alias b='bundle'
 alias be='bundle exec'
 alias rs='bundle exec rspec'
 alias guard='title GUARD ${PWD##*/}; bundle exec guard && wait $!; title Console'
+
+# run apps
+alias bemso="cd ~/dev/mysageone_uk/host_app; clear; echo -e \"Booting My Sage One\"; be rails s"
+alias beacc="cd ~/dev/sage_one_accounts_uk; clear; echo -e \"Booting Accounts\"; be rails s thin -p3030"
+alias bepay="cd ~/dev/sage_one_payroll_uk; clear; echo -e \"Booting Payroll\"; be rails s -p3031"
+alias beext="cd ~/dev/sage_one_advanced/host_app; clear; echo -e \"Booting Accounts Extra\"; be rails s -p 3032"
+alias beadd="cd ~/dev/sage_one_addons_uk/host_app; clear; echo -e \"Booting Addons UK\"; be rails s -p 3050"
+
+# setup apps on master
+alias setupmso="cd ~/dev/mysageone_uk; clear; echo -e \"Setting Up MSO on Master\"; git fetch --all; git checkout master; git pull; ./ci/prepare_host_app.sh"
+alias setupacc="cd ~/dev/sage_one_accounts_uk; clear; echo -e \"Setting Up Accounts on Master\"; git fetch --all; git checkout master; git pull; ./ci/prepare_host_app.sh"
+alias setuppay="cd ~/dev/sage_one_payroll_uk; clear; echo -e \"Setting Up Payroll on Master\"; git fetch --all; git checkout master; git pull; ./ci/prepare_host_app.sh"
+alias setupext="cd ~/dev/sage_one_advanced; clear; echo -e \"Setting Up Accounts Extra on Master\"; git fetch --all; git checkout master; git pull; ./ci/prepare_host_app.sh"
+alias setupadd="cd ~/dev/sage_one_addons_uk; clear; echo -e \"Setting Up Addons UK on Master\"; git fetch --all; git checkout master; git pull; ./ci/prepare_host_app.sh"
 
 # search functions
 alias findme='grep -nir --exclude=\*.svn\* --exclude=\*.swp'

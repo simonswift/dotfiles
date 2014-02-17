@@ -38,3 +38,5 @@
 	prompt = false
 [merge]
 	tool = Kaleidoscope
+[core]
+	excludesfile = /Users/adamgeorgeson/.gitignore_global
