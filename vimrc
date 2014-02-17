@@ -24,20 +24,20 @@ set backspace=indent,eol,start    " Intuitive backspacing.
 
 set number
 set hidden
-"set autoindent
+set autoindent
 
 set wrap                          " Turn on line wrapping.
 set scrolloff=3                   " Show 3 lines of context around the cursor.
 
 " Do I want to keep these? Or should I let vim handle backups?
-"set nobackup
-set backup
-set backupdir=~/.vim/backup
-set noswapfile
+set nobackup
+"set backup
+"set backupdir=~/.vim/backup
+"set noswapfile
 
 set pastetoggle=<F2>
 
-set mouse=a
+"set mouse=a
 set clipboard=unnamed
 noremap ; :
 
@@ -58,6 +58,9 @@ set list
 "Set line endings to show as ¬ instead of $ when viewing in :set list mode
 set lcs=eol:¬
 
+"map leader to , and \
+map , \
+
 " Tab mappings.
 " map <leader>tt :tabnew<cr>
 map <leader>te :tabedit
@@ -68,6 +71,10 @@ map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
+nmap <leader>b :call InsertDebugger()<CR>
+nmap <leader>dd :call InsertDebugger()<CR>
+nmap <silent><leader>gb :call GitBlame()<CR>
+nmap <silent><leader>f :NERDTreeToggle<CR>
 
 " CTRL + n = remove blank space at the end of lines
 nnoremap <silent> <C-n> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -79,3 +86,19 @@ au BufNewFile,BufRead *.ctp set filetype=html
 au BufNewFile,BufRead Gemfile set filetype=ruby
 au BufNewFile,BufRead Rakefile set filetype=ruby
 au BufNewFile,BufRead Fudgefile set filetype=ruby
+
+function! InsertDebugger()
+  if(&filetype == 'ruby')
+    :normal orequire 'pry'; binding.pry
+  else
+    :normal odebugger
+  endif
+  :normal ==
+endfunction
+
+function! GitBlame()
+  let l:p = -3 + line('.')
+  let l:n = 3 + line('.')
+  let l:command = "git blame " . @% . " -w -L " . l:p . "," . l:n
+  echo system(l:command)
+endfunction
