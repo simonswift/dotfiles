@@ -2,9 +2,9 @@ set nocompatible                  " Must come first because it changes other opt
 
 " Use pathogen to easily modify the runtime path to include all
 " plugins under the ~/.vim/bundle directory
-call pathogen#infect()
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
+execute pathogen#helptags()
+execute pathogen#runtime_append_all_bundles()
 
 syntax on
 filetype plugin indent on
@@ -21,6 +21,7 @@ set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
 
 set backspace=indent,eol,start    " Intuitive backspacing.
+set foldmethod=manual
 
 set number
 set hidden
@@ -33,7 +34,7 @@ set scrolloff=3                   " Show 3 lines of context around the cursor.
 set nobackup
 "set backup
 "set backupdir=~/.vim/backup
-"set noswapfile
+set noswapfile
 
 set pastetoggle=<F2>
 
