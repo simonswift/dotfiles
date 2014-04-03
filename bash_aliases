@@ -1,10 +1,10 @@
 # Go to common locations
-alias dev="cd ~/dev/; clear"
-alias gtmso="cd ~/dev/mysageone_uk; clear"
-alias gtacc="cd ~/dev/sage_one_accounts_uk; clear"
-alias gtpay="cd ~/dev/sage_one_payroll_uk; clear"
-alias gtext="cd ~/dev/sage_one_advanced_uk/host_app; clear"
-alias gtadd="cd ~/dev/sage_one_addons_uk/host_app; clear"
+alias dev="cd ~/dev; clear"
+alias mso="cd ~/dev/mysageone_uk; clear"
+alias acc="cd ~/dev/sage_one_accounts_uk; clear"
+alias pay="cd ~/dev/sage_one_payroll_uk; clear"
+alias ext="cd ~/dev/sage_one_advanced_uk/host_app; clear"
+alias add="cd ~/dev/sage_one_addons_uk/host_app; clear"
 
 # Proxy Fix for RSpec and Firefox 14
 export no_proxy=127.0.0.1
