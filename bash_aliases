@@ -1,5 +1,5 @@
 # Go to common locations
-alias dev="cd ~/dev; clear"
+alias dev="cd ~/dev/; clear"
 alias gtmso="cd ~/dev/mysageone_uk; clear"
 alias gtacc="cd ~/dev/sage_one_accounts_uk; clear"
 alias gtpay="cd ~/dev/sage_one_payroll_uk; clear"
@@ -60,14 +60,14 @@ alias bemso="cd ~/dev/mysageone_uk/host_app; clear; echo -e \"Booting My Sage On
 alias beacc="cd ~/dev/sage_one_accounts_uk; clear; echo -e \"Booting Accounts\"; be rails s thin -p3030"
 alias bepay="cd ~/dev/sage_one_payroll_uk; clear; echo -e \"Booting Payroll\"; be rails s -p3031"
 alias beext="cd ~/dev/sage_one_advanced/host_app; clear; echo -e \"Booting Accounts Extra\"; be rails s -p 3032"
-alias beadd="cd ~/dev/sage_one_addons_uk/host_app; clear; echo -e \"Booting Addons UK\"; be rails s -p 3050"
-
+alias beadd="cd ~/dev/sage_one_addons_uk/host_app; clear; echo -e \"Booting Addons UK\"; be rails s thin -p 3050"
+alias bepdf="cd ~/dev/sage_one_advanced/host_app; clear; be fuji_pdf_server start"
 # setup apps on master
-alias setupmso="cd ~/dev/mysageone_uk; clear; echo -e \"Setting Up MSO on Master\"; git fetch --all; git checkout master; git pull; ./ci/prepare_host_app.sh"
-alias setupacc="cd ~/dev/sage_one_accounts_uk; clear; echo -e \"Setting Up Accounts on Master\"; git fetch --all; git checkout master; git pull; ./ci/prepare_host_app.sh"
-alias setuppay="cd ~/dev/sage_one_payroll_uk; clear; echo -e \"Setting Up Payroll on Master\"; git fetch --all; git checkout master; git pull; ./ci/prepare_host_app.sh"
-alias setupext="cd ~/dev/sage_one_advanced; clear; echo -e \"Setting Up Accounts Extra on Master\"; git fetch --all; git checkout master; git pull; ./ci/prepare_host_app.sh"
-alias setupadd="cd ~/dev/sage_one_addons_uk; clear; echo -e \"Setting Up Addons UK on Master\"; git fetch --all; git checkout master; git pull; ./ci/prepare_host_app.sh"
+alias setupmso="cd ~/dev/mysageone_uk; clear; echo -e \"Setting Up MSO on Master\"; git fetch --all; git checkout master; git pull upstream master; ./ci/prepare_host_app.sh"
+alias setupacc="cd ~/dev/sage_one_accounts_uk; clear; echo -e \"Setting Up Accounts on Master\"; git fetch --all; git checkout master; git pull upstream master; ./ci/prepare_host_app.sh"
+alias setuppay="cd ~/dev/sage_one_payroll_uk; clear; echo -e \"Setting Up Payroll on Master\"; git fetch --all; git checkout master; git pull upstream master; ./ci/prepare_host_app.sh"
+alias setupext="cd ~/dev/sage_one_advanced; clear; echo -e \"Setting Up Accounts Extra on Master\"; git fetch --all; git checkout master; git pull upstream master; ./ci/prepare_host_app.sh"
+alias setupadd="cd ~/dev/sage_one_addons_uk; clear; echo -e \"Setting Up Addons UK on Master\"; git fetch --all; git checkout master; git pull upstream master; ./ci/prepare_host_app.sh"
 
 # search functions
 alias findme='grep -nir --exclude=\*.svn\* --exclude=\*.swp'

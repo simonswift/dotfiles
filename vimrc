@@ -9,7 +9,7 @@ call pathogen#runtime_append_all_bundles()
 syntax on
 filetype plugin indent on
 
-set t_Co=256
+"set t_Co=256
 set background=dark
 colorscheme badwolf
 
@@ -27,13 +27,13 @@ set hidden
 set autoindent
 
 set wrap                          " Turn on line wrapping.
-set scrolloff=3                   " Show 3 lines of context around the cursor.
+"set scrolloff=3                   " Show 3 lines of context around the cursor.
 
 " Do I want to keep these? Or should I let vim handle backups?
 set nobackup
 "set backup
 "set backupdir=~/.vim/backup
-"set noswapfile
+set noswapfile
 
 set pastetoggle=<F2>
 
@@ -51,6 +51,12 @@ set cursorline
 set ai
 set ts=2
 set softtabstop=2
+
+" " Tab completion options
+" " (only complete to the longest unambiguous match, and show a menu)
+set completeopt=longest,menu
+set wildmode=list:longest,list:full
+set complete=.,t
 
 set showmatch "show matching brackets
 
