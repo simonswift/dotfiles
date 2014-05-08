@@ -1,17 +1,15 @@
-set nocompatible                  " Must come first because it changes other options.
-
-" Use pathogen to easily modify the runtime path to include all
-" plugins under the ~/.vim/bundle directory
 execute pathogen#infect()
 execute pathogen#helptags()
-execute pathogen#runtime_append_all_bundles()
+
+set nocp
+set nocompatible                  " Must come first because it changes other options.
 
 syntax on
 filetype plugin indent on
 
-"set t_Co=256
-set background=dark
-colorscheme badwolf
+set t_Co=256
+"set background=dark
+colorscheme jellybeans
 
 autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
