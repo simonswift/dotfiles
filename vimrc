@@ -9,7 +9,7 @@ filetype plugin indent on
 
 set t_Co=256
 "set background=dark
-colorscheme jellybeans
+colorscheme badwolf
 
 autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -84,7 +84,7 @@ nmap <silent><leader>f :NERDTreeToggle<CR>
 " CTRL + n = remove blank space at the end of lines
 nnoremap <silent> <C-n> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
-"Platform .ui files
+"Set file type to Ruby for common files such as ui files and Gemfiles
 au BufRead,BufNewFile *.ui set filetype=ruby
 au BufRead,BufNewFile *.mustache set filetype=javascript
 au BufNewFile,BufRead *.ctp set filetype=html
