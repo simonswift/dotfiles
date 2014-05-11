@@ -127,10 +127,12 @@ function repo_root {
 
 # Check branch status
 function get_branch_status {
-  if [[ $(git status | tail -n1) != "nothing to commit (working directory clean)" ]]; then
-    echo -e "$GIT_DIRTY"
-  else
+  if [[ $(git status | tail -n1) == "nothing to commit (working directory clean)" ]]; then
     echo -e "$GIT_CLEAN"
+  elif [[ $(git status | tail -n1) == "nothing to commit, working directory clean" ]]; then
+    echo -e "$GIT_CLEAN"
+  else
+    echo -e "$GIT_DIRTY"
   fi
 }
 
