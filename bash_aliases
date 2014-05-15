@@ -3,7 +3,7 @@ alias dev="cd ~/dev; clear"
 alias mso="cd ~/dev/mysageone_uk; clear"
 alias acc="cd ~/dev/sage_one_accounts_uk; clear"
 alias pay="cd ~/dev/sage_one_payroll_uk; clear"
-alias ext="cd ~/dev/sage_one_advanced_uk/host_app; clear"
+alias ext="cd ~/dev/sage_one_advanced; clear"
 alias add="cd ~/dev/sage_one_addons_uk/host_app; clear"
 
 # Proxy Fix for RSpec and Firefox 14
@@ -74,6 +74,7 @@ alias findme='grep -nir --exclude=\*.svn\* --exclude=\*.swp'
 alias whouses='grep -lir --exclude=\*.svn\* --exclude=\*.swp'
 alias findfile='find . -iname'
 alias inspect='du -csh'
+alias fsearch='git ls-files | grep'
 
 # package management
 alias apt-update-with-keys='sudo apt-get update 2> /tmp/keymissing; for key in $(grep "NO_PUBKEY" /tmp/keymissing |sed "s/.*NO_PUBKEY //"); do echo -e "\nProcessing key: $key"; sudo gpg --keyserver subkeys.pgp.net --recv $key && sudo gpg --export --armor $key | sudo apt-key add -; done'
