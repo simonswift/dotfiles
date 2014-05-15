@@ -1,15 +1,13 @@
-set nocompatible                  " Must come first because it changes other options.
-
-" Use pathogen to easily modify the runtime path to include all
-" plugins under the ~/.vim/bundle directory
 execute pathogen#infect()
 execute pathogen#helptags()
-execute pathogen#runtime_append_all_bundles()
+
+set nocp
+set nocompatible                  " Must come first because it changes other options.
 
 syntax on
 filetype plugin indent on
 
-"set t_Co=256
+set t_Co=256
 set background=dark
 colorscheme badwolf
 
@@ -19,6 +17,11 @@ let NERDTreeShowHidden=1
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
+set incsearch                     " Show match when typing
+set hlsearch                      " Highlight all search matches
+set laststatus=2                  " Always show status bar
+set lazyredraw                    " Dont redraw between marcos
+set timeoutlen=500                " Time to wait for second key press
 
 set backspace=indent,eol,start    " Intuitive backspacing.
 set foldmethod=manual
@@ -27,8 +30,8 @@ set number
 set hidden
 set autoindent
 
-set wrap                          " Turn on line wrapping.
-"set scrolloff=3                   " Show 3 lines of context around the cursor.
+set wrap                            " Turn on line wrapping.
+"set scrolloff=3                    " Show 3 lines of context around the cursor.
 
 " Do I want to keep these? Or should I let vim handle backups?
 set nobackup
@@ -38,7 +41,7 @@ set noswapfile
 
 set pastetoggle=<F2>
 
-"set mouse=a
+set mouse=a
 set clipboard=unnamed
 noremap ; :
 
@@ -55,8 +58,8 @@ set ai
 set ts=2
 set softtabstop=2
 
-" " Tab completion options
-" " (only complete to the longest unambiguous match, and show a menu)
+" Tab completion options
+" (only complete to the longest unambiguous match, and show a menu)
 set completeopt=longest,menu
 set wildmode=list:longest,list:full
 set complete=.,t
@@ -64,10 +67,10 @@ set complete=.,t
 set showmatch "show matching brackets
 
 set list
-"Set line endings to show as ¬ instead of $ when viewing in :set list mode
+" Set line endings to show as ¬ instead of $ when viewing in :set list mode
 set lcs=eol:¬
 
-"map leader to , and \
+" Map leader to , and \
 map , \
 
 " Tab mappings.
@@ -85,16 +88,46 @@ nmap <leader>dd :call InsertDebugger()<CR>
 nmap <silent><leader>gb :call GitBlame()<CR>
 nmap <silent><leader>f :NERDTreeToggle<CR>
 
+" Syntax checking for Ruby files hitting F9
+autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
+
 " CTRL + n = remove blank space at the end of lines
 nnoremap <silent> <C-n> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
-"Platform .ui files
+" Set file type to Ruby for common files such as ui files and Gemfiles
 au BufRead,BufNewFile *.ui set filetype=ruby
 au BufRead,BufNewFile *.mustache set filetype=javascript
 au BufNewFile,BufRead *.ctp set filetype=html
 au BufNewFile,BufRead Gemfile set filetype=ruby
 au BufNewFile,BufRead Rakefile set filetype=ruby
 au BufNewFile,BufRead Fudgefile set filetype=ruby
+
+" Run test on the whole file
+nmap <silent><leader>tf :call RunTest(' -- '. @%)<CR>
+
+" Run tests on the current line
+nmap <silent><leader>tt :call TestLine()<CR>
+
+function! ExecCmd(command)
+  silent !clear
+  execute "!echo " . a:command . " && " . a:command
+endfunction
+
+function! TestLine()
+  let l:command =  "-f documentation -l " . line(".") . ' ' . @%
+  call RunTest(l:command)
+endfunction
+
+function! RunTest(command)
+  let g:command = (system("pgrep zeus") != '') ? "zeus " : "bundle exec "
+
+  if filereadable("./bin/rspec")
+    let g:command = "./bin/"
+  endif
+
+  let g:command .= 'rspec  ' . a:command
+  call ExecCmd(g:command)
+endfunction
 
 function! InsertDebugger()
   if(&filetype == 'ruby')

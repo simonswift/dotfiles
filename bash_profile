@@ -4,6 +4,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export EDITOR='vim'
+export no_proxy=127.0.0.1 # Proxy fix for Rspec
 source ~/dotfiles/git-completion.bash
 
 if [ -f ~/.bash_aliases ]; then

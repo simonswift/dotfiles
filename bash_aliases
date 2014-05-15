@@ -6,22 +6,40 @@ alias pay="cd ~/dev/sage_one_payroll_uk; clear"
 alias ext="cd ~/dev/sage_one_advanced; clear"
 alias add="cd ~/dev/sage_one_addons_uk/host_app; clear"
 
-# Proxy Fix for RSpec and Firefox 14
-export no_proxy=127.0.0.1
+# development tasks
+alias g="git"
+alias gc="git checkout"
+alias gs="git status -sb"
+alias gb="git checkout -b"
+alias gd="git diff"
+alias gp="git pull"
+alias gf="git fetch"
+alias b='bundle'
+alias be='bundle exec'
+alias rs='bundle exec rspec'
+alias guard='title GUARD ${PWD##*/}; bundle exec guard && wait $!; title Console'
+alias evergreen="be rails s -p 4000"
+
+# run apps
+alias bemso="cd ~/dev/mysageone_uk/host_app; clear; echo -e \"Booting My Sage One\"; be rails s"
+alias beacc="cd ~/dev/sage_one_accounts_uk; clear; echo -e \"Booting Accounts\"; be rails s thin -p3030"
+alias bepay="cd ~/dev/sage_one_payroll_uk; clear; echo -e \"Booting Payroll\"; be rails s -p3031"
+alias beext="cd ~/dev/sage_one_advanced/host_app; clear; echo -e \"Booting Accounts Extra\"; be rails s -p 3032"
+alias beadd="cd ~/dev/sage_one_addons_uk/host_app; clear; echo -e \"Booting Addons UK\"; be rails s thin -p 3050"
+alias bepdf="cd ~/dev/sage_one_advanced/host_app; clear; be fuji_pdf_server start"
+
+# setup apps on master
+alias setupmso="cd ~/dev/mysageone_uk; clear; echo -e \"Setting Up MSO on Master\"; git fetch --all; git checkout master; git pull origin master; ./ci/prepare_host_app.sh"
+alias setupacc="cd ~/dev/sage_one_accounts_uk; clear; echo -e \"Setting Up Accounts on Master\"; git fetch --all; git checkout master; git pull origin master; ./ci/prepare_host_app.sh"
+alias setuppay="cd ~/dev/sage_one_payroll_uk; clear; echo -e \"Setting Up Payroll on Master\"; git fetch --all; git checkout master; git pull origin master; ./ci/prepare_host_app.sh"
+alias setupext="cd ~/dev/sage_one_advanced; clear; echo -e \"Setting Up Accounts Extra on Master\"; git fetch --all; git checkout master; git pull origin master; ./ci/prepare_host_app.sh"
+alias setupadd="cd ~/dev/sage_one_addons_uk; clear; echo -e \"Setting Up Addons UK on Master\"; git fetch --all; git checkout master; git pull origin master; ./ci/prepare_host_app.sh"
 
 # Directory Nav
 alias ..="cd .."
 alias ...="cd ../.."
 
-alias evergreen="be rails s -p 4000"
-
-# Bash & Vim
-alias bashe="vim ~/.bash_aliases"
-alias bashl="source ~/.bash_aliases; echo '.bash_aliases loaded'"
-alias vime="vim ~/.vimrc"
-alias server="python -m SimpleHTTPServer":
-
-#enable color support of ls and also add handy aliases
+# enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -38,46 +56,12 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# development tasks
-alias g="git"
-alias gc="git checkout"
-alias gs="git status -sb"
-alias gb="git checkout -b"
-alias gd="git diff"
-alias gp="git pull"
-alias gf="git fetch"
-alias b='bundle'
-alias be='bundle exec'
-alias rs='bundle exec rspec'
-alias guard='title GUARD ${PWD##*/}; bundle exec guard && wait $!; title Console'
-
-# run apps
-alias bemso="cd ~/dev/mysageone_uk/host_app; clear; echo -e \"Booting My Sage One\"; be rails s"
-alias beacc="cd ~/dev/sage_one_accounts_uk; clear; echo -e \"Booting Accounts\"; be rails s thin -p3030"
-alias bepay="cd ~/dev/sage_one_payroll_uk; clear; echo -e \"Booting Payroll\"; be rails s -p3031"
-alias beext="cd ~/dev/sage_one_advanced/host_app; clear; echo -e \"Booting Accounts Extra\"; be rails s -p 3032"
-alias beadd="cd ~/dev/sage_one_addons_uk/host_app; clear; echo -e \"Booting Addons UK\"; be rails s thin -p 3050"
-alias bepdf="cd ~/dev/sage_one_advanced/host_app; clear; be fuji_pdf_server start"
-# setup apps on master
-alias setupmso="cd ~/dev/mysageone_uk; clear; echo -e \"Setting Up MSO on Master\"; git fetch --all; git checkout master; git pull upstream master; ./ci/prepare_host_app.sh"
-alias setupacc="cd ~/dev/sage_one_accounts_uk; clear; echo -e \"Setting Up Accounts on Master\"; git fetch --all; git checkout master; git pull upstream master; ./ci/prepare_host_app.sh"
-alias setuppay="cd ~/dev/sage_one_payroll_uk; clear; echo -e \"Setting Up Payroll on Master\"; git fetch --all; git checkout master; git pull upstream master; ./ci/prepare_host_app.sh"
-alias setupext="cd ~/dev/sage_one_advanced; clear; echo -e \"Setting Up Accounts Extra on Master\"; git fetch --all; git checkout master; git pull upstream master; ./ci/prepare_host_app.sh"
-alias setupadd="cd ~/dev/sage_one_addons_uk; clear; echo -e \"Setting Up Addons UK on Master\"; git fetch --all; git checkout master; git pull upstream master; ./ci/prepare_host_app.sh"
-
 # search functions
 alias findme='grep -nir --exclude=\*.svn\* --exclude=\*.swp'
 alias whouses='grep -lir --exclude=\*.svn\* --exclude=\*.swp'
 alias findfile='find . -iname'
 alias inspect='du -csh'
 alias fsearch='git ls-files | grep'
-
-# package management
-alias apt-update-with-keys='sudo apt-get update 2> /tmp/keymissing; for key in $(grep "NO_PUBKEY" /tmp/keymissing |sed "s/.*NO_PUBKEY //"); do echo -e "\nProcessing key: $key"; sudo gpg --keyserver subkeys.pgp.net --recv $key && sudo gpg --export --armor $key | sudo apt-key add -; done'
 
 #------------------------------------------------------
 # CUSTOM COMMAND PROMPT
@@ -144,10 +128,12 @@ function repo_root {
 
 # Check branch status
 function get_branch_status {
-  if [[ $(git status | tail -n1) != "nothing to commit (working directory clean)" ]]; then
-    echo -e "$GIT_DIRTY"
-  else
+  if [[ $(git status | tail -n1) == "nothing to commit (working directory clean)" ]]; then
     echo -e "$GIT_CLEAN"
+  elif [[ $(git status | tail -n1) == "nothing to commit, working directory clean" ]]; then
+    echo -e "$GIT_CLEAN"
+  else
+    echo -e "$GIT_DIRTY"
   fi
 }
 

@@ -39,4 +39,4 @@
 [merge]
 	tool = Kaleidoscope
 [core]
-	excludesfile = /Users/adamgeorgeson/.gitignore_global
+	excludesfile = /Users/adamgeorgeson/.gitignore
