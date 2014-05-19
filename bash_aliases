@@ -3,7 +3,7 @@ alias dev="cd ~/dev; clear"
 alias mso="cd ~/dev/mysageone_uk; clear"
 alias acc="cd ~/dev/sage_one_accounts_uk; clear"
 alias pay="cd ~/dev/sage_one_payroll_uk; clear"
-alias ext="cd ~/dev/sage_one_advanced_uk/host_app; clear"
+alias ext="cd ~/dev/sage_one_advanced/host_app; clear"
 alias add="cd ~/dev/sage_one_addons_uk/host_app; clear"
 
 # development tasks
@@ -14,6 +14,7 @@ alias gb="git checkout -b"
 alias gd="git diff"
 alias gp="git pull"
 alias gf="git fetch"
+alist greset="git reset head --hard"
 alias b='bundle'
 alias be='bundle exec'
 alias rs='bundle exec rspec'
