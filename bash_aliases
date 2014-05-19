@@ -3,7 +3,7 @@ alias dev="cd ~/dev; clear"
 alias mso="cd ~/dev/mysageone_uk; clear"
 alias acc="cd ~/dev/sage_one_accounts_uk; clear"
 alias pay="cd ~/dev/sage_one_payroll_uk; clear"
-alias ext="cd ~/dev/sage_one_advanced/host_app; clear"
+alias ext="cd ~/dev/sage_one_advanced; clear"
 alias add="cd ~/dev/sage_one_addons_uk/host_app; clear"
 
 # development tasks
@@ -62,6 +62,7 @@ alias findme='grep -nir --exclude=\*.svn\* --exclude=\*.swp'
 alias whouses='grep -lir --exclude=\*.svn\* --exclude=\*.swp'
 alias findfile='find . -iname'
 alias inspect='du -csh'
+alias fsearch='git ls-files | grep'
 
 #------------------------------------------------------
 # CUSTOM COMMAND PROMPT

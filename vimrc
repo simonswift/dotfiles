@@ -51,7 +51,9 @@ nnoremap k gk
 set tabstop=2                    " Global tab width.
 set shiftwidth=2                 " And again, related.
 set expandtab                    " Use spaces instead of tabs
-set cursorline
+set nocursorcolumn 
+set nocursorline
+"set cursorline
 set ai
 set ts=2
 set softtabstop=2
@@ -72,7 +74,7 @@ set lcs=eol:¬
 map , \
 
 " Tab mappings.
-" map <leader>tt :tabnew<cr>
+" map <leader>nt :tabnew<cr>
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
 map <leader>to :tabonly<cr>
