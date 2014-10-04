@@ -1,11 +1,28 @@
-execute pathogen#infect()
-execute pathogen#helptags()
-
+set nocompatible              " Must come first because it changes other options.
 set nocp
-set nocompatible                  " Must come first because it changes other options.
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'sjl/badwolf'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tpope/vim-fugitive'
+Plugin 'sjl/vitality.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 syntax on
-filetype plugin indent on
 
 set t_Co=256
 set background=dark
@@ -20,18 +37,17 @@ set showmode                      " Display the mode you're in.
 set incsearch                     " Show match when typing
 set hlsearch                      " Highlight all search matches
 set laststatus=2                  " Always show status bar
-set lazyredraw                    " Dont redraw between marcos
+set lazyredraw                    " Dont redraw between macros
 set timeoutlen=500                " Time to wait for second key press
 
 set backspace=indent,eol,start    " Intuitive backspacing.
 set foldmethod=manual
 
-set number
-set hidden
+set number                        " Enable numbers
+set hidden                        " Unsaved changes to buffer. :ls to see buffers. :b[n] to switch buffer
 set autoindent
 
-set wrap                            " Turn on line wrapping.
-"set scrolloff=3                    " Show 3 lines of context around the cursor.
+set wrap                          " Turn on line wrapping.
 
 " Do I want to keep these? Or should I let vim handle backups?
 set nobackup
@@ -41,22 +57,25 @@ set noswapfile
 
 set pastetoggle=<F2>
 
-set mouse=a
-set clipboard=unnamed
+set mouse=a                       " Enable mouse input
+set clipboard+=unnamed            " Use system clipboard
 noremap ; :
-
-nnoremap j gj
-nnoremap k gk
-
+noremap j gj
+noremap k gk
 set tabstop=2                    " Global tab width.
 set shiftwidth=2                 " And again, related.
 set expandtab                    " Use spaces instead of tabs
-set nocursorcolumn 
+set nocursorcolumn
 set nocursorline
-"set cursorline
 set ai
 set ts=2
 set softtabstop=2
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
 
 " Tab completion options
 " (only complete to the longest unambiguous match, and show a menu)
@@ -66,30 +85,22 @@ set complete=.,t
 
 set showmatch "show matching brackets
 
-set list
+set list                         " display whitespace
 " Set line endings to show as ¬ instead of $ when viewing in :set list mode
 set lcs=eol:¬
 
-" Map leader to , and \
+" Map leader to ,
 map , \
 
-" Tab mappings.
-" map <leader>nt :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>to :tabonly<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-map <leader>tm :tabmove
-nmap <leader>b :call InsertDebugger()<CR>
-nmap <leader>dd :call InsertDebugger()<CR>
-nmap <silent><leader>gb :call GitBlame()<CR>
-nmap <silent><leader>f :NERDTreeToggle<CR>
+" RSpec.vim mappings
+map <Leader>tf :call RunCurrentSpecFile()<CR>
+map <Leader>tt :call RunNearestSpec()<CR>
+map <Leader>tl :call RunLastSpec()<CR>
+map <Leader>ta :call RunAllSpecs()<CR>
 
-" Syntax checking for Ruby files hitting F9
-autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
+" Misc mappings.
+nmap <leader>dd :call InsertDebugger()<CR>
+nmap <silent><leader>f :NERDTreeTabsToggle<CR>
 
 " CTRL + n = remove blank space at the end of lines
 nnoremap <silent> <C-n> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -102,33 +113,6 @@ au BufNewFile,BufRead Gemfile set filetype=ruby
 au BufNewFile,BufRead Rakefile set filetype=ruby
 au BufNewFile,BufRead Fudgefile set filetype=ruby
 
-" Run test on the whole file
-nmap <silent><leader>tf :call RunTest(' -- '. @%)<CR>
-
-" Run tests on the current line
-nmap <silent><leader>tt :call TestLine()<CR>
-
-function! ExecCmd(command)
-  silent !clear
-  execute "!echo " . a:command . " && " . a:command
-endfunction
-
-function! TestLine()
-  let l:command =  "-f documentation -l " . line(".") . ' ' . @%
-  call RunTest(l:command)
-endfunction
-
-function! RunTest(command)
-  let g:command = (system("pgrep zeus") != '') ? "zeus " : "bundle exec "
-
-  if filereadable("./bin/rspec")
-    let g:command = "./bin/"
-  endif
-
-  let g:command .= 'rspec  ' . a:command
-  call ExecCmd(g:command)
-endfunction
-
 function! InsertDebugger()
   if(&filetype == 'ruby')
     :normal orequire 'pry'; binding.pry
@@ -136,11 +120,4 @@ function! InsertDebugger()
     :normal odebugger
   endif
   :normal ==
-endfunction
-
-function! GitBlame()
-  let l:p = -3 + line('.')
-  let l:n = 3 + line('.')
-  let l:command = "git blame " . @% . " -w -L " . l:p . "," . l:n
-  echo system(l:command)
 endfunction

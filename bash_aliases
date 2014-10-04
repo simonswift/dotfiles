@@ -1,7 +1,7 @@
 # development tasks
 alias g="git"
 alias gc="git checkout"
-alias gs="git status -sb"
+alias gs="git status"
 alias gb="git checkout -b"
 alias gd="git diff"
 alias gp="git pull"
