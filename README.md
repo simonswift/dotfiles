@@ -20,8 +20,8 @@ Usage
 * `ln -nfs ~/dotfiles/bash_aliases .bash_aliases`
 * `ln -nfs ~/dotfiles/gitconfig .gitconfig`
 
-##Fetch submodules after cloning repo, in ~/dotfiles
+## Install Plugins
 
-* `cd ~/dotfiles`
-* `git submodule update --init`
-## If issues with Vim Plugins, go to ~/dotfiles/vim/bundle and git clone the repos of empty folders. Will resolve this.
+* vim
+* :source %
+* :PluginInstall
