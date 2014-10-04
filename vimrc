@@ -14,9 +14,10 @@ Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'sjl/badwolf'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'jistr/vim-nerdtree-tabs'
+"Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/vitality.vim'
+Plugin 'tomtom/tcomment_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -27,6 +28,12 @@ syntax on
 set t_Co=256
 set background=dark
 colorscheme badwolf
+let g:airline#extensions#tabline#enabled = 1  " Automatically displays all buffers when there's only one tab open
+let g:airline_powerline_fonts = 1
+let g:airline_theme='powerlineish'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#displayed_head_limit = 10
+let g:airline#extensions#syntastic#enabled = 1
 
 autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -100,7 +107,7 @@ map <Leader>ta :call RunAllSpecs()<CR>
 
 " Misc mappings.
 nmap <leader>dd :call InsertDebugger()<CR>
-nmap <silent><leader>f :NERDTreeTabsToggle<CR>
+nmap <silent><leader>f :NERDTreeToggle<CR>
 
 " CTRL + n = remove blank space at the end of lines
 nnoremap <silent> <C-n> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
