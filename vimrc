@@ -18,6 +18,7 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-fugitive'
 Plugin 'sjl/vitality.vim'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-endwise'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,7 +66,7 @@ set noswapfile
 set pastetoggle=<F2>
 
 set mouse=a                       " Enable mouse input
-set clipboard+=unnamed            " Use system clipboard
+set clipboard+=unnamed           " Use system clipboard
 noremap ; :
 noremap j gj
 noremap k gk

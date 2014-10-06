@@ -16,6 +16,7 @@ alias evergreen="be rails s -p 4000"
 # Directory Nav
 alias ..="cd .."
 alias ...="cd ../.."
+alias dev="cd ~/dev"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
