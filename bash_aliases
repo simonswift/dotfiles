@@ -12,6 +12,7 @@ alias be='bundle exec'
 alias rs='bundle exec rspec'
 alias guard='title GUARD ${PWD##*/}; bundle exec guard && wait $!; title Console'
 alias evergreen="be rails s -p 4000"
+alias dj="be rake jobs:clear jobs:work"
 
 # Directory Nav
 alias ..="cd .."
