@@ -25,6 +25,3 @@ eval "$(rbenv init -)"
 export CC=/usr/local/bin/gcc-4.2
 export CXX=/usr/local/bin/g++-4.2
 export PATH=/usr/local/bin:$HOME/bin:$PATH
-
-export OCTOKIT_LOGIN=adamgeorgeson
-export OCTOKIT_PASSWORD=6c14dc421e6b8c94418556ee111d57e7b8eafbf7
