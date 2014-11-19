@@ -100,7 +100,8 @@ set lcs=eol:¬
 " Map leader to ,
 map , \
 
-" RSpec.vim mappings
+" VIM-Rspec
+let g:rspec_command = "!bundle exec rspec -I . {spec}"
 map <Leader>tf :call RunCurrentSpecFile()<CR>
 map <Leader>tt :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
@@ -109,6 +110,7 @@ map <Leader>ta :call RunAllSpecs()<CR>
 " Misc mappings.
 nmap <leader>dd :call InsertDebugger()<CR>
 nmap <silent><leader>f :NERDTreeToggle<CR>
+nmap <silent><leader>n :NERDTreeFind<CR>
 
 " CTRL + n = remove blank space at the end of lines
 nnoremap <silent> <C-n> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
