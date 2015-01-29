@@ -6,6 +6,8 @@ eval "$(rbenv init -)"
 export EDITOR='vim'
 export no_proxy=127.0.0.1 # Proxy fix for Rspec
 source ~/dotfiles/git-completion.bash
+export MYSQL_USERNAME='root'
+export MYSQL_PASSWORD='admin'
 
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases

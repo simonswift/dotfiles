@@ -22,6 +22,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'idanarye/vim-merginal'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
