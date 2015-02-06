@@ -10,19 +10,22 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
+Plugin 'vitaly/vim-syntastic-coffee'
 Plugin 'bling/vim-airline'
 Plugin 'sjl/badwolf'
 Plugin 'thoughtbot/vim-rspec'
-"Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fugitive'
-Plugin 'sjl/vitality.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'vitaly/vim-syntastic-coffee'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'idanarye/vim-merginal'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -69,7 +72,10 @@ set noswapfile
 
 set pastetoggle=<F2>
 
-set mouse=a                       " Enable mouse input
+" last-position-jump
+:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+set mouse=a                      " Enable mouse input
 set clipboard+=unnamed           " Use system clipboard
 noremap ; :
 noremap j gj
@@ -115,6 +121,9 @@ map <Leader>ta :call RunAllSpecs()<CR>
 nmap <leader>dd :call InsertDebugger()<CR>
 nmap <silent><leader>f :NERDTreeToggle<CR>
 nmap <silent><leader>n :NERDTreeFind<CR>
+
+" Clear search buffer with return
+noremap <CR> :nohlsearch<cr>
 
 " CTRL + n = remove blank space at the end of lines
 nnoremap <silent> <C-n> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
