@@ -25,6 +25,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'idanarye/vim-merginal'
+Plugin 'fatih/vim-go'
+Plugin 'shime/vim-livedown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -120,6 +122,7 @@ map <Leader>ta :call RunAllSpecs()<CR>
 nmap <leader>dd :call InsertDebugger()<CR>
 nmap <silent><leader>f :NERDTreeToggle<CR>
 nmap <silent><leader>n :NERDTreeFind<CR>
+nmap <silent><leader>md :LivedownPreview<CR>
 
 " Clear search buffer with return
 noremap <CR> :nohlsearch<cr>
