@@ -8,6 +8,7 @@ export no_proxy=127.0.0.1 # Proxy fix for Rspec
 source ~/dotfiles/git-completion.bash
 export MYSQL_USERNAME='root'
 export MYSQL_PASSWORD='admin'
+eval "$(hub alias -s)"
 
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
@@ -19,6 +20,10 @@ fi
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
+fi
+
+if [ -f ~/hub.bash_completion.sh ]; then
+  . /hub.bash_completion.sh
 fi
 
 ### Added by the Heroku Toolbelt
