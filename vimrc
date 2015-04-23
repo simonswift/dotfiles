@@ -103,7 +103,7 @@ set complete=.,t
 
 set showmatch "show matching brackets
 
-set list                         " display whitespace
+" set list                         " display whitespace
 " Set line endings to show as ¬ instead of $ when viewing in :set list mode
 set lcs=eol:¬
 

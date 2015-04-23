@@ -8,6 +8,7 @@ export no_proxy=127.0.0.1 # Proxy fix for Rspec
 source ~/dotfiles/git-completion.bash
 export MYSQL_USERNAME='root'
 export MYSQL_PASSWORD='admin'
+export DEFERRED_GARBAGE_COLLECTION=true
 eval "$(hub alias -s)"
 
 if [ -f ~/.bash_aliases ]; then
@@ -32,6 +33,7 @@ eval "$(rbenv init -)"
 export CC=/usr/local/bin/gcc-4.2
 export CXX=/usr/local/bin/g++-4.2
 export PATH=/usr/local/bin:$HOME/bin:$PATH
+export MACOSX_DEPLOYMENT_TARGET=10.9
 
 function github {
   branch="$(git rev-parse --abbrev-ref HEAD)"
@@ -50,3 +52,6 @@ function github {
 
         echo "Opening ${url} $(\open ${url})"
 }
+export ANDROID=/Users/adamgeorgeson/Library/Android/sdk
+export GOPATH=/Users/adamgeorgeson/dev/go
+export PATH=/usr/local/bin:/Users/adamgeorgeson/bin:/Users/adamgeorgeson/.rbenv/shims:/usr/local/heroku/bin:/Users/adamgeorgeson/.rbenv/shims:/Users/adamgeorgeson/.rbenv/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/adamgeorgeson/dev/go/bin:/Users/adamgeorgeson/dev/go/bin:/Users/adamgeorgeson/Library/Android/sdk/tools:/Users/adamgeorgeson/Library/Android/sdk/platform-tools
