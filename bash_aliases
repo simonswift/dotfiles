@@ -6,6 +6,7 @@ alias gb="git checkout -b"
 alias gd="git diff"
 alias gp="git pull"
 alias gf="git fetch"
+alias gg="git grep"
 alias gl="git log"
 alias grh="git reset head --hard"
 alias b='bundle'
@@ -36,8 +37,6 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # search functions
-alias findme='grep -nir --exclude=\*.svn\* --exclude=\*.swp'
-alias whouses='grep -lir --exclude=\*.svn\* --exclude=\*.swp'
 alias findfile='find . -iname'
 alias inspect='du -csh'
 alias fsearch='git ls-files | grep'
