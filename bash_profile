@@ -11,6 +11,12 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
+
+export MYSQL_USERNAME=root
+export MYSQL_PASSWORD=admin
+
+export SSL_CERT_FILE=/usr/share/curl/curl-ca-bundle.crt
 
 export DEFERRED_GARBAGE_COLLECTION=true
 export EDITOR='vim'

@@ -1,4 +1,5 @@
 # development tasks
+alias vi="vim"
 alias g="git"
 alias gc="git checkout"
 alias gs="git status"

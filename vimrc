@@ -6,7 +6,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
+" Plugins managed by Vundle
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
@@ -33,6 +33,7 @@ filetype plugin indent on    " required
 
 syntax on
 
+" Theme settings
 set t_Co=256
 set background=dark
 colorscheme badwolf
@@ -43,6 +44,7 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#syntastic#enabled = 1
 
+" Open NerdTree on opening of Vim
 autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 let NERDTreeShowHidden=1
@@ -103,10 +105,6 @@ set complete=.,t
 
 set showmatch "show matching brackets
 
-" set list                         " display whitespace
-" Set line endings to show as ¬ instead of $ when viewing in :set list mode
-set lcs=eol:¬
-
 " Map leader to ,
 map , \
 
@@ -122,6 +120,13 @@ nmap <leader>dd :call InsertDebugger()<CR>
 nmap <silent><leader>f :NERDTreeToggle<CR>
 nmap <silent><leader>n :NERDTreeFind<CR>
 nmap <silent><leader>md :LivedownPreview<CR>
+
+" Indent the entire file
+nnoremap <leader>= mpggVG='pzz
+
+" ,. and ,/ to go between buffers
+nmap <leader>. :bp<enter>
+nmap <leader>/ :bn<enter>
 
 " Clear search buffer with return
 noremap <CR> :nohlsearch<cr>
