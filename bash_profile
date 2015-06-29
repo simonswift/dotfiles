@@ -1,6 +1,9 @@
 export ANDROID=/Users/adamgeorgeson/Library/Android/sdk
 export GOPATH=/Users/adamgeorgeson/dev/go
 
+export MYSQL_USERNAME='root'
+export MYSQL_PASSWORD='admin'
+
 export CC=/usr/local/bin/gcc-4.2
 export CXX=/usr/local/bin/g++-4.2
 export MACOSX_DEPLOYMENT_TARGET=10.9 # Resolves issues with nokogiri gem installation
@@ -12,6 +15,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/bin/:$PATH"
 
 export MYSQL_USERNAME=root
 export MYSQL_PASSWORD=admin
