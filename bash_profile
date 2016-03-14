@@ -10,13 +10,19 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-export PATH="/usr/local/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="/usr/local/cellar:$PATH"
+export PATH="/Users/adamgeorgeson/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0:$PATH"
+export PATH="/Users/adamgeorgeson/.gem/ruby/2.1.0:$PATH"
+export PATH="$ANDROID/platform-tools:$PATH"
 
 export MYSQL_USERNAME=root
 export MYSQL_PASSWORD=admin
 
-export SSL_CERT_FILE=/usr/share/curl/curl-ca-bundle.crt
+export SLACK_TOKEN=RKVSa2rLdr2cfTaNQGAUwinj
+export SLACK_WEBHOOK='https://hooks.slack.com/services/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'
+
+#export SSL_CERT_FILE=/usr/share/curl/curl-ca-bundle.crt
 
 export DEFERRED_GARBAGE_COLLECTION=true
 export EDITOR='vim'

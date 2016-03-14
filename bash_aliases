@@ -17,6 +17,10 @@ alias guard='title GUARD ${PWD##*/}; bundle exec guard && wait $!; title Console
 alias evergreen="be rails s -p 4000"
 alias dj="be rake jobs:clear jobs:work"
 
+# Network nav
+alias retropie='ssh pi@retropie'
+alias zero='ssh pi@raspberrypi'
+
 # Directory Nav
 alias ..="cd .."
 alias ...="cd ../.."

@@ -13,6 +13,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sjl/badwolf'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'vim-ruby/vim-ruby'
@@ -26,6 +27,11 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'idanarye/vim-merginal'
 Plugin 'fatih/vim-go'
 Plugin 'shime/vim-livedown'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'vitaly/vim-syntastic-coffee'
+Plugin 'majutsushi/tagbar'
+Plugin 'Yggdroot/indentLine'
+Plugin 'tpope/vim-dispatch.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,7 +72,6 @@ set autoindent
 
 set wrap                          " Turn on line wrapping.
 
-" Do I want to keep these? Or should I let vim handle backups?
 set nobackup
 "set backup
 "set backupdir=~/.vim/backup
@@ -109,7 +114,7 @@ set showmatch "show matching brackets
 map , \
 
 " VIM-Rspec
-let g:rspec_command = "!bundle exec rspec -I . {spec}"
+let g:rspec_command = "Dispatch rspec --format=progress --no-profile {spec}"
 map <Leader>tf :call RunCurrentSpecFile()<CR>
 map <Leader>tt :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
@@ -121,18 +126,12 @@ nmap <silent><leader>f :NERDTreeToggle<CR>
 nmap <silent><leader>n :NERDTreeFind<CR>
 nmap <silent><leader>md :LivedownPreview<CR>
 
-" Indent the entire file
-nnoremap <leader>= mpggVG='pzz
-
 " ,. and ,/ to go between buffers
 nmap <leader>. :bp<enter>
 nmap <leader>/ :bn<enter>
 
 " Clear search buffer with return
 noremap <CR> :nohlsearch<cr>
-
-" CTRL + n = remove blank space at the end of lines
-nnoremap <silent> <C-n> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Set file type to Ruby for common files such as ui files and Gemfiles
 au BufRead,BufNewFile *.ui set filetype=ruby
