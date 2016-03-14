@@ -17,6 +17,8 @@ alias guard='title GUARD ${PWD##*/}; bundle exec guard && wait $!; title Console
 alias evergreen="be rails s -p 4000"
 alias dj="be rake jobs:clear jobs:work"
 
+alias zoom="echo \"https://zoom.us/j/4265191537\""
+
 # Directory Nav
 alias ..="cd .."
 alias ...="cd ../.."
@@ -24,6 +26,11 @@ alias dev="cd ~/dev"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+for i in ~/dev/*
+do
+   alias $(basename $i)="cd '$i'"
+done
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

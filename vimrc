@@ -12,7 +12,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sjl/badwolf'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'vim-ruby/vim-ruby'
@@ -26,6 +27,8 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'idanarye/vim-merginal'
 Plugin 'fatih/vim-go'
 Plugin 'shime/vim-livedown'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'kylef/apiblueprint.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

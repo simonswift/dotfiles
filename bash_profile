@@ -15,16 +15,30 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
-export PATH="$HOME/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/bin/:$PATH"
+export PATH="$HOME/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/bin:$PATH"
 
 export MYSQL_USERNAME=root
 export MYSQL_PASSWORD=admin
 
-export SSL_CERT_FILE=/usr/share/curl/curl-ca-bundle.crt
+export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
 
 export DEFERRED_GARBAGE_COLLECTION=true
 export EDITOR='vim'
 export no_proxy=127.0.0.1 # Proxy fix for Rspec
+
+export GEM_SERVER=http://sageone:onesalviaofficinalisone@gems.platform.sageone.com
+
+# Local API Testing
+# ngrok start --all
+export TUNNELED_MS1='http://mso-adamgeorgeson.ngrok.io'
+export TUNNELED_GAC='http://gac-adamgeorgeson.ngrok.io'
+alias apiboot="MS1_UK_ACCOUNTS_EXTRA_SERVER=$TUNNELED_GAC GAC_MYSAGEONE_SERVER=$TUNNELED_MS1 bundle exec rails s"
+alias apibootus="MS1_US_ACCOUNTS_EXTRA_SERVER=$TUNNELED_GAC GAC_MYSAGEONE_SERVER=$TUNNELED_MS1 bundle exec rails s"
+alias tunnel="ngrok start --all"
+
+alias boot="be rails s"
+alias prep="./ci/prepare_host_app.sh"
+alias jobs="be rake jobs:work"
 
 eval "$(hub alias -s)"
 eval "$(rbenv init -)"
