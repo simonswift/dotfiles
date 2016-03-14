@@ -1,6 +1,9 @@
 export ANDROID=/Users/adamgeorgeson/Library/Android/sdk
 export GOPATH=/Users/adamgeorgeson/dev/go
 
+export MYSQL_USERNAME='root'
+export MYSQL_PASSWORD='admin'
+
 export CC=/usr/local/bin/gcc-4.2
 export CXX=/usr/local/bin/g++-4.2
 export MACOSX_DEPLOYMENT_TARGET=10.9 # Resolves issues with nokogiri gem installation
@@ -12,21 +15,26 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="/usr/local/cellar:$PATH"
-export PATH="/Users/adamgeorgeson/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0:$PATH"
-export PATH="/Users/adamgeorgeson/.gem/ruby/2.1.0:$PATH"
 export PATH="$ANDROID/platform-tools:$PATH"
+export PATH="$HOME/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/bin:$PATH"
 
 export MYSQL_USERNAME=root
 export MYSQL_PASSWORD=admin
 
-export SLACK_TOKEN=RKVSa2rLdr2cfTaNQGAUwinj
-export SLACK_WEBHOOK='https://hooks.slack.com/services/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'
-
-#export SSL_CERT_FILE=/usr/share/curl/curl-ca-bundle.crt
-
 export DEFERRED_GARBAGE_COLLECTION=true
 export EDITOR='vim'
-export no_proxy=127.0.0.1 # Proxy fix for Rspec
+
+# Local API Testing
+# ngrok start --all
+export TUNNELED_MS1='http://mso-adamgeorgeson.ngrok.io'
+export TUNNELED_GAC='http://gac-adamgeorgeson.ngrok.io'
+alias apiboot="MS1_UK_ACCOUNTS_EXTRA_SERVER=$TUNNELED_GAC GAC_MYSAGEONE_SERVER=$TUNNELED_MS1 bundle exec rails s"
+alias apibootus="MS1_US_ACCOUNTS_EXTRA_SERVER=$TUNNELED_GAC GAC_MYSAGEONE_SERVER=$TUNNELED_MS1 bundle exec rails s"
+alias tunnel="ngrok start --all"
+
+alias boot="be rails s"
+alias prep="./ci/prepare_host_app.sh"
+alias jobs="be rake jobs:work"
 
 eval "$(hub alias -s)"
 eval "$(rbenv init -)"
@@ -187,26 +195,6 @@ function edit_mode {
 }
 alias em='edit_mode'
 alias floatme='wmctrl -r :ACTIVE: -b remove,maximized_horz;wmctrl -r :ACTIVE: -b remove,maximized_vert; wmctrl -r :ACTIVE: -e 0,150,150,600,400'
-
-# Output chmod reference diagram and usage
-function chmod_ref {
-  echo "
-        OWNER  GROUP   WORLD
-        r w x  r w x   r w x
-        1 1 1  1 0 1   1 0 1
-          7      5       5
-          |______|_______|
-                 |
-                755
-  "
-
-  echo "
- 000  001  010  011  100  101  110  111
-  0    1    2    3    4    5    6    7
-  "
-
-  chmod --help
-}
 
 # Chief function to call all / any custom functions
 function prompt_command {
