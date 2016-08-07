@@ -58,6 +58,8 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
+source ~/.bin/tmuxinator.bash
+
 function github {
   branch="$(git rev-parse --abbrev-ref HEAD)"
     url="$(git config --get remote.origin.url)"
@@ -140,7 +142,7 @@ function repo_root {
 
 # Check branch status
 function get_branch_status {
-  if [[ $(git status | tail -n1) == "nothing to commit (working directory clean)" ]]; then
+  if [[ $(git status | tail -n1) == "nothing to commit, working tree clean" ]]; then
     echo -e "$GIT_CLEAN"
   elif [[ $(git status | tail -n1) == "nothing to commit, working directory clean" ]]; then
     echo -e "$GIT_CLEAN"
