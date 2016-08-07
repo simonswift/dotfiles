@@ -12,8 +12,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sjl/badwolf'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'vim-ruby/vim-ruby'
@@ -34,6 +34,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-dispatch.git'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'kylef/apiblueprint.vim'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,16 +42,21 @@ filetype plugin indent on    " required
 
 syntax on
 
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+set laststatus=2
+
 " Theme settings
 set t_Co=256
 set background=dark
 colorscheme badwolf
-let g:airline#extensions#tabline#enabled = 1  " Automatically displays all buffers when there's only one tab open
-let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#branch#displayed_head_limit = 10
-let g:airline#extensions#syntastic#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1  " Automatically displays all buffers when there's only one tab open
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme='powerlineish'
+" let g:airline#extensions#branch#enabled = 1
+" let g:airline#extensions#branch#displayed_head_limit = 10
+" let g:airline#extensions#syntastic#enabled = 1
+
+let g:indentLine_color_term = 239
 
 " Open NerdTree on opening of Vim
 autocmd vimenter * NERDTree
@@ -116,7 +122,7 @@ set showmatch "show matching brackets
 map , \
 
 " VIM-Rspec
-let g:rspec_command = "Dispatch rspec --format=progress --no-profile {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec --format=progress --no-profile {spec}"
 map <Leader>tf :call RunCurrentSpecFile()<CR>
 map <Leader>tt :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
