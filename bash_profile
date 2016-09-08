@@ -1,4 +1,4 @@
-export ANDROID=/Users/adamgeorgeson/Library/Android/sdk
+export ANDROID_HOME=/Users/adamgeorgeson/Library/Android/sdk
 export GOPATH=/Users/adamgeorgeson/dev/go
 
 export MYSQL_USERNAME='root'
@@ -15,7 +15,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="/usr/local/cellar:$PATH"
-export PATH="$ANDROID/platform-tools:$PATH"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
 export PATH="$HOME/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/bin:$PATH"
 
 export MYSQL_USERNAME=root
