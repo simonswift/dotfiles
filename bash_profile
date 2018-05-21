@@ -17,6 +17,8 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="/usr/local/cellar:$PATH"
 export PATH="$ANDROID/platform-tools:$PATH"
 export PATH="$HOME/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
 
 export MYSQL_USERNAME=root
 export MYSQL_PASSWORD=admin
@@ -24,17 +26,13 @@ export MYSQL_PASSWORD=admin
 export DEFERRED_GARBAGE_COLLECTION=true
 export EDITOR='vim'
 
-# Local API Testing
-# ngrok start --all
-export TUNNELED_MS1='http://mso-adamgeorgeson.ngrok.io'
-export TUNNELED_GAC='http://gac-adamgeorgeson.ngrok.io'
-alias apiboot="MS1_UK_ACCOUNTS_EXTRA_SERVER=$TUNNELED_GAC GAC_MYSAGEONE_SERVER=$TUNNELED_MS1 bundle exec rails s"
-alias apibootus="MS1_US_ACCOUNTS_EXTRA_SERVER=$TUNNELED_GAC GAC_MYSAGEONE_SERVER=$TUNNELED_MS1 bundle exec rails s"
-alias tunnel="ngrok start --all"
+# Rubocop check against changes in git status, or a particular commit
+alias rubocommit="git diff-tree --no-commit-id --name-only -r <my_commit_sha> | grep .rb | xargs rubocop -f simple"
+alias rgs="git status --porcelain | cut -c4- | grep .rb | xargs bundle exec rubocop -f simple"
+alias rgsa="git status --porcelain | cut -c4- | grep .rb | xargs bundle exec rubocop -a"
 
 alias boot="be rails s"
 alias prep="./ci/prepare_host_app.sh"
-alias jobs="be rake jobs:work"
 
 eval "$(hub alias -s)"
 eval "$(rbenv init -)"
@@ -56,6 +54,10 @@ fi
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
+fi
+
+if [ -f ~/.bin/tmuxinator.bash ]; then
+  . ~/.bin/tmuxinator.bash
 fi
 
 function github {
@@ -144,9 +146,15 @@ function get_branch_status {
     echo -e "$GIT_CLEAN"
   elif [[ $(git status | tail -n1) == "nothing to commit, working directory clean" ]]; then
     echo -e "$GIT_CLEAN"
+  elif [[ $(git status | tail -n1) == "nothing to commit, working tree clean" ]]; then
+    echo -e "$GIT_CLEAN"
   else
     echo -e "$GIT_DIRTY"
   fi
+}
+
+function aws_login() {
+  eval "$(aws ecr get-login --no-include-email --region eu-west-1)"
 }
 
 # Set the prompt according to which repo the current dir is in - if any

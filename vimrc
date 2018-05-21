@@ -12,8 +12,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'sjl/badwolf'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'vim-ruby/vim-ruby'
@@ -28,12 +29,14 @@ Plugin 'idanarye/vim-merginal'
 Plugin 'fatih/vim-go'
 Plugin 'shime/vim-livedown'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'vitaly/vim-syntastic-coffee'
+" Plugin 'vitaly/vim-syntastic-coffee'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tpope/vim-dispatch.git'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'kylef/apiblueprint.vim'
+Plugin 'sandeepravi/refactor-rails.vim'
+Plugin 'mxw/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,12 +48,12 @@ syntax on
 set t_Co=256
 set background=dark
 colorscheme badwolf
-let g:airline#extensions#tabline#enabled = 1  " Automatically displays all buffers when there's only one tab open
-let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#branch#displayed_head_limit = 10
-let g:airline#extensions#syntastic#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1  " Automatically displays all buffers when there's only one tab open
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme='powerlineish'
+" let g:airline#extensions#branch#enabled = 1
+" let g:airline#extensions#branch#displayed_head_limit = 10
+" let g:airline#extensions#syntastic#enabled = 1
 
 " Open NerdTree on opening of Vim
 autocmd vimenter * NERDTree
@@ -85,6 +88,7 @@ set pastetoggle=<F2>
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 set mouse=a                      " Enable mouse input
+set ttymouse=xterm2              " Enable mouse_sgr
 set clipboard+=unnamed           " Use system clipboard
 noremap ; :
 noremap j gj
@@ -112,11 +116,13 @@ set complete=.,t
 
 set showmatch "show matching brackets
 
+" let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+
 " Map leader to ,
 map , \
 
 " VIM-Rspec
-let g:rspec_command = "Dispatch rspec --format=progress --no-profile {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec --format=progress --no-profile {spec}"
 map <Leader>tf :call RunCurrentSpecFile()<CR>
 map <Leader>tt :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
