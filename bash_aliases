@@ -47,6 +47,6 @@ alias findfile='find . -iname'
 alias inspect='du -csh'
 alias fsearch='git ls-files | grep'
 
-alias ukboot=./script/boot.sh -w=gac -w=ms1uk
-alias usboot=./script/boot.sh -w=gac -w=ms1us
-alias ukpboot=./script/boot.sh -w=gac -w=ms1uk -w=payroll
+alias ukboot='./script/boot.sh -w=gac -w=ms1uk'
+alias usboot='./script/boot.sh -w=gac -w=ms1us'
+alias ukpboot='./script/boot.sh -w=gac -w=ms1uk -w=payroll'
