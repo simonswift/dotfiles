@@ -17,10 +17,6 @@ alias guard='title GUARD ${PWD##*/}; bundle exec guard && wait $!; title Console
 alias evergreen="be rails s -p 4000"
 alias dj="be rake jobs:clear jobs:work"
 
-alias retropie='ssh pi@retropie'
-alias zero='ssh pi@raspberrypi'
-alias zoom="echo \"https://zoom.us/j/4265191537\""
-
 # Directory Nav
 alias ..="cd .."
 alias ...="cd ../.."

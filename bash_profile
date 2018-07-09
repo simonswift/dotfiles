@@ -1,6 +1,3 @@
-export ANDROID_HOME=/Users/adamgeorgeson/Library/Android/sdk
-export GOPATH=/Users/adamgeorgeson/dev/go
-
 export MYSQL_USERNAME='root'
 export MYSQL_PASSWORD='admin'
 
@@ -24,23 +21,15 @@ export MYSQL_PASSWORD=admin
 export DEFERRED_GARBAGE_COLLECTION=true
 export EDITOR='vim'
 
-# Local API Testing
-# ngrok start --all
-export TUNNELED_MS1='http://mso-adamgeorgeson.ngrok.io'
-export TUNNELED_GAC='http://gac-adamgeorgeson.ngrok.io'
-alias apiboot="MS1_UK_ACCOUNTS_EXTRA_SERVER=$TUNNELED_GAC GAC_MYSAGEONE_SERVER=$TUNNELED_MS1 bundle exec rails s"
-alias apibootus="MS1_US_ACCOUNTS_EXTRA_SERVER=$TUNNELED_GAC GAC_MYSAGEONE_SERVER=$TUNNELED_MS1 bundle exec rails s"
-alias tunnel="ngrok start --all"
-
 alias boot="be rails s"
 alias prep="./ci/prepare_host_app.sh"
 alias jobs="be rake jobs:work"
 
-eval "$(hub alias -s)"
-eval "$(rbenv init -)"
+# eval "$(hub alias -s)"
+# eval "$(rbenv init -)"
 
 source ~/dotfiles/git-completion.bash
-source ~/dotfiles/hub.bash_completion.sh
+# source ~/dotfiles/hub.bash_completion.sh
 
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
@@ -54,11 +43,11 @@ if [ -f ~/.sage_profile ]; then
   . ~/.sage_profile
 fi
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-fi
+# if [ -f `brew --prefix`/etc/bash_completion ]; then
+#   . `brew --prefix`/etc/bash_completion
+# fi
 
-source ~/.bin/tmuxinator.bash
+# source ~/.bin/tmuxinator.bash
 
 function github {
   branch="$(git rev-parse --abbrev-ref HEAD)"
