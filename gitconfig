@@ -1,6 +1,6 @@
 [user]
-  name = Adam Georgeson
-  email = adam.georgeson@sage.com
+  name = Simon Swift
+  email = simon.swift@sage.com
 [alias]
   st = status
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
@@ -13,4 +13,4 @@
 [mergetool]
 	prompt = false
 [core]
-	excludesfile = /Users/adamgeorgeson/.gitignore
+	excludesfile = /Users/simonswift/.gitignore
