@@ -51,5 +51,5 @@ alias ukboot='./script/boot.sh -w=gac -w=ms1uk'
 alias usboot='./script/boot.sh -w=gac -w=ms1us'
 alias ukpboot='./script/boot.sh -w=gac -w=ms1uk -w=payroll'
 
-alias aws_login='`aws ecr get-login --region eu-west-1`'
+alias aws_login='$(aws ecr get-login --no-include-email)'
 alias portainer='cd ~/portainer && ./portainer -d /home/developer/portainer/data & x-www-browser http://localhost:9000'
