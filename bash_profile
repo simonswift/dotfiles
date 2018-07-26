@@ -58,7 +58,7 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-source ~/.bin/tmuxinator.bash
+# source ~/.bin/tmuxinator.bash
 
 function github {
   branch="$(git rev-parse --abbrev-ref HEAD)"
