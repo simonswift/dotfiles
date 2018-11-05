@@ -50,3 +50,7 @@ fi
 alias findfile='find . -iname'
 alias inspect='du -csh'
 alias fsearch='git ls-files | grep'
+
+alias mint="ssh developer@192.168.99.100"
+alias start_mint="vboxmanage startvm s1_development_environment-2-0 --type headless"
+alias stop_mint="vboxmanage controlvm s1_development_environment-2-0 poweroff"

@@ -3,3 +3,4 @@ sage_profile
 bundle/
 vim/autoload
 vim/plugin
+.idea
