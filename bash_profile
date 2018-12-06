@@ -24,6 +24,8 @@ export MYSQL_PASSWORD=admin
 export DEFERRED_GARBAGE_COLLECTION=true
 export EDITOR='vim'
 
+export DYNAMO_ENDPOINT=http://localhost:8000
+
 # Local API Testing
 # ngrok start --all
 export TUNNELED_MS1='http://mso-adamgeorgeson.ngrok.io'
