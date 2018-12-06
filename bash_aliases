@@ -55,6 +55,7 @@ alias mint="ssh developer@192.168.99.100"
 alias start_mint="vboxmanage startvm s1_development_environment-2-0 --type headless"
 alias stop_mint="vboxmanage controlvm s1_development_environment-2-0 poweroff"
 
-alias ukboot='./script/boot.sh -w=gac -w=ms1uk'
+alias ukboot='./script/boot.sh -w=gac -w=ms1uk -w=event'
 alias usboot='./script/boot.sh -w=gac -w=ms1us'
-alias ukpboot='./script/boot.sh -w=gac -w=ms1uk -w=payroll'
+alias ukpboot='./script/boot.sh -w=gac -w=ms1uk -w=payroll -w=event'
+alias aws_login='aws ecr get-login'
