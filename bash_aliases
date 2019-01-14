@@ -56,7 +56,7 @@ alias start_mint="vboxmanage startvm s1_development_environment-2-0 --type headl
 alias stop_mint="vboxmanage controlvm s1_development_environment-2-0 poweroff"
 
 alias ukboot='./script/boot.sh -w=gac -w=ms1uk -w=event'
-alias usboot='./script/boot.sh -w=gac -w=ms1us'
+alias usboot='./script/boot.sh -w=gac -w=ms1us -w=cbc'
 alias ukpboot='./script/boot.sh -w=gac -w=ms1uk -w=payroll -w=event'
 alias aws_login='aws ecr get-login'
 alias code='/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron'
