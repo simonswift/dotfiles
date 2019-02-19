@@ -28,6 +28,7 @@ alias dev="cd ~/dev"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias s1ct="cd ~/dev/s1_central_test"
 
 for i in ~/dev/*
 do
