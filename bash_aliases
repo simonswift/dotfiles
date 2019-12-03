@@ -60,6 +60,11 @@ alias ukboot='./script/boot.sh -w=gac -w=ms1uk -w=event'
 alias usboot='./script/boot.sh -w=gac -w=ms1us -w=cbc'
 alias ukpboot='./script/boot.sh -w=gac -w=ms1uk -w=payroll -w=event'
 alias ms1boot='./script/boot.sh -w=gac -w=ms1uk --pull'
-alias aws_login='aws ecr get-login'
+alias aws_login='`aws ecr get-login --no-include-email`'
 alias code='/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron'
 alias dynamo='dynamodb-admin &'
+alias org="cd ~/dev/sbc.core.organisation.service/"
+alias orgi="cd ~/dev/sbc.core.organisation.infrastructure/"
+alias acs="cd sbc.core.accesscontrol.service/"
+alias acsi="cd ~/dev/sbc.core.accesscontrol.infrastructure/"
+alias gentoken='curl -d "{\"grant_type\": \"client_credentials\",\"client_id\": \"mV6AUHsTYwnFQ0pfh4tnsy21bFN1DStr\",\"client_secret\":\"JgoD6FoPn8mQyZflwHitXyQHLZGsdbOhw84NwoNYwXA-TZ0sLnx2bJVo05mtCQxF\", \"audience\": \"99a011f/sbc\"}" -H "Content-Type: application/json" -X POST https://id-shadow.sage.com/oauth/token'
