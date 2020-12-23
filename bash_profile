@@ -26,13 +26,10 @@ export EDITOR='vim'
 
 export DYNAMO_ENDPOINT=http://localhost:8000
 
+export NUGET_JFROG_PASSWORD=vLpFvp82nn4CQeLg
+
 # Local API Testing
 # ngrok start --all
-export TUNNELED_MS1='http://mso-adamgeorgeson.ngrok.io'
-export TUNNELED_GAC='http://gac-adamgeorgeson.ngrok.io'
-alias apiboot="MS1_UK_ACCOUNTS_EXTRA_SERVER=$TUNNELED_GAC GAC_MYSAGEONE_SERVER=$TUNNELED_MS1 bundle exec rails s"
-alias apibootus="MS1_US_ACCOUNTS_EXTRA_SERVER=$TUNNELED_GAC GAC_MYSAGEONE_SERVER=$TUNNELED_MS1 bundle exec rails s"
-alias tunnel="ngrok start --all"
 
 alias boot="be rails s"
 alias prep="./ci/prepare_host_app.sh"
